@@ -152,9 +152,18 @@ class RefactorHTTPHandler(BaseHTTPRequestHandler):
             
         self._send_json_response(404, {"error": "Not Found", "path": self.path})
 
-    def log_message(self, format, *args):
-        # Clean logging format without leaking request bodies or credentials
-        sys.stderr.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {args[0]} {args[1]} {args[2]}\n")
+    
+def log_message(self, format, *args):
+    # Log HTTP requests without exposing request bodies or credentials.
+    try:
+        message = format % args
+    except (TypeError, ValueError):
+        message = format
+
+    sys.stderr.write(
+        f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {message}\n"
+    )
+
 
 
 def run(host: str = "0.0.0.0", port: int = 8000):
