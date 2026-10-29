@@ -12,11 +12,11 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "https://refactor-ai-backend.onrender.com/api/$1"
+      "dest": "https://refactor-ai-2r8m.onrender.com/api/$1"
     },
     {
       "src": "/health",
-      "dest": "https://refactor-ai-backend.onrender.com/health"
+      "dest": "https://refactor-ai-2r8m.onrender.com/health"
     },
     {
       "handle": "filesystem"
@@ -27,4 +27,3 @@
     }
   ]
 }
-
